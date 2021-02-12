@@ -18,7 +18,6 @@ select
 	, date_part('month', sales_date) as join_month
 	, date_trunc('month', sales_date) as cohort
 	, count(*) over (partition by date_trunc('month', sales_date)) as cohort_size
-	,date_part('year', end_date ) as churned_year
 	,date_part('year', sales_date ) as join_year
 	,case
 		when end_date< sales_date then null
@@ -28,7 +27,7 @@ select
 from
 	clean_frmp_null), final as (
 select
-	date_part('month', end_date)-join_month + 12 * (churned_year - join_year) + 1 as churned_month
+	date_part('month', end_date)-join_month + 12 * (date_part('year', end_date ) - join_year) + 1 as churned_month
 	, date_trunc('month', sales_date) as cohort
 	, cohort_size
 	, count(*) filter(where account_status='Churned') as churned_users
@@ -36,5 +35,6 @@ from
 	cleaned
 group by
 	1
-	, 2,3)
-select * from final"""
+	, 2
+    , 3)
+select * from  final"""

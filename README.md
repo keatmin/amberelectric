@@ -18,7 +18,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-- Run `python main.py` and output file will be in `/data/processed/dataset.csv`
+- Run `python run.py` and output file will be in `/data/processed/dataset.csv`
 
 ## Cleaning in data before adding into `/data`
 - Removed last column on csv

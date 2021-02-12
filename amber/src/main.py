@@ -3,7 +3,8 @@ import os
 import pandas as pd
 import psycopg2 as pg
 from psycopg2.extensions import connection
-from queries import SQL
+
+from amber.src.queries import SQL
 
 
 def connect_db(
@@ -36,7 +37,3 @@ def main():
     conn = connect_db()
     data = get_data(SQL, conn)
     clean_data(data)
-
-
-if __name__ == "__main__":
-    main()
