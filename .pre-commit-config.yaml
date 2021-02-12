@@ -1,0 +1,29 @@
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.3.0
+  hooks:
+    - id: check-yaml
+    - id: end-of-file-fixer
+    - id: trailing-whitespace
+    - id: detect-aws-credentials
+- repo: https://github.com/Yelp/detect-secrets
+  rev: v0.14.3
+  hooks:
+    - id: detect-secrets
+- repo: https://github.com/Lucas-C/pre-commit-hooks
+  rev: v1.1.9
+  hooks:
+    - id: forbid-crlf
+    - id: remove-crlf
+- repo: https://github.com/psf/black
+  rev: 20.8b1
+  hooks:
+    - id: black
+      args: [--line-length=79]
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.8.4
+  hooks:
+    - id: flake8
+- repo: https://github.com/asottile/reorder_python_imports
+  rev: v2.3.6
+  hooks:
+    - id: reorder-python-imports
